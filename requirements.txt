@@ -8,3 +8,4 @@ PySastrawi>=1.2.0
 torch>=2.0.0
 transformers>=4.30.0
 emoji>=2.0.0
+streamlit>=1.25.0
