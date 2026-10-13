@@ -8,17 +8,18 @@ st.set_page_config(page_title="Sentiment Analysis App", layout="centered")
 st.title("📊 Text Sentiment Analyst")
 st.write("Input text or review in field below to detect the sentiment.")
 
-# 2. Load Model dengan Cache (Agar aplikasi cepat & tidak reload terus)
+# 2. Load Model dengan Cache
 @st.cache_resource
 def load_sentiment_model():
-    model_path = "./models/e-commerce"
+    model_path = "dzakaaufa/e_commerce-sentiment-analysis" 
+
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForSequenceClassification.from_pretrained(model_path)
     return tokenizer, model
 
 tokenizer, model = load_sentiment_model()
 
-# 3. Fungsi Preprocessing (Gunakan regex r"..." yang sudah diperbaiki)
+# 3. Fungsi Preprocessing
 def clean_text(text):
     text = re.sub(r"http\S+|www\S+|https\S+", "", text, flags=re.MULTILINE)
     text = re.sub(r"\s\s+", " ", text)
